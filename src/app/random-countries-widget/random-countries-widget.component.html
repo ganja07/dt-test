@@ -1,0 +1,17 @@
+<div class="widget_container">
+  <h3>Discover upcoming holidays!</h3>
+  <hr />
+  @for (country of countriesHolidays; track $index) {
+    <div class="holiday">
+      <h4>
+        <img [src]="`https://flagsapi.com/${country.countryCode}/flat/24.png`" [alt]="country.countryCode" />
+        <a [routerLink]="'/country/' + country.countryCode">{{ country.name }}</a>
+        on 
+        {{ country.holidays[0].date | date: 'mediumDate' }}:
+      </h4>
+      <p>
+        {{ country.holidays[0].name }}
+      </p>
+    </div>
+  }
+</div>

@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <a [routerLink]="'/'" class="back_btn">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </a>
+  <h1>{{ country?.commonName }} holidays</h1>
+  <main>
+    <ul>
+      @for (holiday of holidays; track $index) {
+        <li>
+          <span class="date">{{ holiday.date | date: 'mediumDate' }}</span> -
+          <span class="title">{{ holiday.name }} </span>
+          <p>
+            @if (holiday.types && holiday.types.length > 1) {
+                @for (type of holiday.types; track $index) {
+                    <span>{{ type }}</span>
+                }
+                
+            }
+            @else {
+                <span>{{ holiday.types?.[0] }}</span>
+            }
+            
+          </p>
+        </li>
+      }
+    </ul>
+  </main>
+
+  <footer>
+    @for (year of years; track year) {
+      <button [ngClass]="{ active: year === selectedYear }" (click)="onYearSelect(year)">
+        {{ year }}
+      </button>
+    }
+  </footer>
+</div>

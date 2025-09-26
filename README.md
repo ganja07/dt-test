@@ -1,59 +1,95 @@
-# DtCountryInfo
+# Country Info App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.3.
+A Angular project to display country information and holidays.
 
-## Development server
+---
 
-To start a local development server, run:
+## Application overview
+### Features:
+- **Home page**
+    - Display a list of countries fetched from **Nager.Date API**
+    - Each country name is a link that navigates to specific **Country Page**
+    - Dymanic search for countries by name
+    - Random countries widget: shows 3 random countries and their next holiday
+- **County page**
+    - Fetch and display list of holiday for selected country and current year using **Nager.Date API**
+    - Year switching allows switching between years (2020–2030) to update the holiday list dynamically
+- **Naviagtion**
+    - Angular routing enables navigation between Home and Country pages
+- **Styling**
+    - Used custom SCSS for components styling and **Angular Material** for using MatIcon
+    - **[Country Flags API](https://flagsapi.com/)** for displaying country flag
 
+- **Environments**
+    - Used **dotenv-webpack** for environments variables
+
+
+### Architecture:
+- **Angular 19** project with standalone components
+- Service handles API requests to **Nager.Date API**
+- Environment configuration with **dotenv-webpack** and `.env` file for base URL
+- Routing and State management
+    - **Angular Router** for page navigation
+    - **Reactive forms** and **Observables** for search and data handling
+- Code quality
+    - **ESLing** for linting
+    - **Prettier** for consistent formatting
+
+---
+
+## Getting started
+
+### Pre-requirements
+
+- Node.js >= 22
+- npm >= 9
+- Angular CLI >= 19
+
+### Installation
+
+1. Clone the repository:
+- for Windows:
 ```bash
-ng serve
+git clone https://github.com/ganja07/dt-test.git
+cd dt-country-info
+```
+- for MacOS:
+```bash
+git clone git@github.com:ganja07/dt-test.git
+cd dt-country-info
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. Install dependencies:
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. Create a `.env` file in the project root and add environment base url:
+```bash
+API_URL=https://link-to-your-api.com/api/v3
+```
+
+### Running the project
 
 ```bash
-ng generate --help
+npm start
 ```
+The app will run on http://localhost:4200.
 
-## Building
-
-To build the project run:
-
+### Linting and formatting
+- **Linting** (ESLint):
 ```bash
-ng build
+npm run lint
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+- **Auto-fix lint issue**:
 ```bash
-ng test
+npm run lint:fix
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+- **Prettier formatting**:
 ```bash
-ng e2e
+npm run format
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
